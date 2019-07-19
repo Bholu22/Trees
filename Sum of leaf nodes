@@ -1,0 +1,18 @@
+  public int SumofLeafNodes(Node root)
+    {
+        // your code here
+       sum=0;
+        cal(root);
+         return sum;
+    }
+    public static void cal(Node node)
+    {
+        if(node==null)
+        return;
+        
+        if(node.left==null && node.right==null){
+        sum=sum+node.data; }
+        
+        cal(node.left);
+        cal(node.right);
+    }

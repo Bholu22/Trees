@@ -1,0 +1,41 @@
+class GfG
+{
+ static  Node root;
+   public static void createNode(int parent[],int i,Node created[])
+   {
+       if(created[i]!=null)
+       return;
+       
+       created[i]=new Node(i);
+       if(parent[i]==-1)
+       {
+           root=created[i];
+           return;
+       }
+       if(created[parent[i]]==null)
+       createNode(parent,parent[i],created);
+       Node p=created[parent[i]];
+       if(p.left==null)
+       {
+           p.left=created[i];
+       }
+       else{
+           p.right=created[i];
+       }
+   }
+    public static Node createTree(int arr[], int n)
+    {
+        //Your code here
+        Node created[]=new Node[n];
+        for(int i=0;i<n;i++)
+        {
+            created[i]=null;
+        }
+        for(int i=0;i<n;i++)
+        {
+            createNode(arr,i,created);
+        }
+        return root;
+    }
+    
+}
